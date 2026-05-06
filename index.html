@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SolarBot | Autonomous Solar Panel Cleaning System</title>
+  <meta name="description" content="Self-built autonomous solar panel cleaning robot using linear rail + motor drive. Zero water. Fully automated."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-sun">☀</div>
+      <span>SOLAR<span class="logo-bot">BOT</span></span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#specs">Specs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn-nav">Get In Touch</a>
+    <button class="hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-anim">
+    <!-- Animated solar grid lines -->
+    <div class="grid-overlay"></div>
+    <!-- Animated glow orbs -->
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span> Student Engineering Project · Built from Scratch
+    </div>
+    <h1>
+      <span class="hero-line1">AUTONOMOUS</span>
+      <span class="hero-line2">SOLAR PANEL<br/><em>CLEANER</em></span>
+    </h1>
+    <p class="hero-sub">
+      A self-designed linear-rail robotic system: water jets spray the panel surface,
+      then a linear wiper sweeps it clean — just like a car windshield wiper, but on a rail.
+    </p>
+    <div class="hero-ctas">
+      <a href="#demo" class="btn-primary">▶ See It Move</a>
+      <a href="#gallery" class="btn-ghost">📷 View Photos</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <span class="hstat-num" data-target="30">0</span><span class="hstat-unit">%</span>
+        <small>More Energy</small>
+      </div>
+      <div class="hstat-sep"></div>
+      <div class="hstat">
+        <span class="hstat-num" data-target="95">0</span><span class="hstat-unit">%</span>
+        <small>Dust Removed</small>
+      </div>
+      <div class="hstat-sep"></div>
+      <div class="hstat">
+        <span class="hstat-num" data-target="24">0</span><span class="hstat-unit">/7</span>
+        <small>Automated</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-photo-frame">
+    <img src="img_hero2.png" alt="SolarBot rail system installed on rooftop — motor unit on left, red rail spanning panels" class="hero-photo"/>
+    <div class="hero-photo-badge">
+      <span class="live-dot"></span> Live Installation
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- DEMO ANIMATION -->
+<section id="demo" class="section-demo">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-tag">How It Moves</span>
+      <h2>Watch the Robot <em class="grad">Clean in Action</em></h2>
+      <p>Water jets spray the panel surface first. Then the wiper unit travels linearly along the rail — exactly like a car windshield wiper, but in straight horizontal motion — sweeping water and dust clean.</p>
+    </div>
+
+    <!-- MAIN CSS ANIMATION: Water spray + Linear wiper -->
+    <div class="demo-scene">
+
+      <!-- Step labels above -->
+      <div class="demo-steps-row">
+        <div class="dstep"><span class="dstep-num">1</span> Water Pipe Supply</div>
+        <div class="dstep-arrow">→</div>
+        <div class="dstep"><span class="dstep-num">2</span> Jet Nozzle Sprays Panel</div>
+        <div class="dstep-arrow">→</div>
+        <div class="dstep"><span class="dstep-num">3</span> Linear Wiper Sweeps Clean</div>
+      </div>
+
+      <!-- Solar panels -->
+      <div class="panels-container">
+        <!-- Water pipe across top -->
+        <div class="water-pipe">
+          <div class="pipe-tube"></div>
+          <div class="pipe-jet jet1"><div class="jet-spray"><span></span><span></span><span></span></div></div>
+          <div class="pipe-jet jet2"><div class="jet-spray"><span></span><span></span><span></span></div></div>
+          <div class="pipe-jet jet3"><div class="jet-spray"><span></span><span></span><span></span></div></div>
+          <div class="pipe-jet jet4"><div class="jet-spray"><span></span><span></span><span></span></div></div>
+          <div class="pipe-jet jet5"><div class="jet-spray"><span></span><span></span><span></span></div></div>
+          <div class="pipe-jet jet6"><div class="jet-spray"><span></span><span></span><span></span></div></div>
+        </div>
+        <div class="solar-panel panel1">
+          <div class="panel-grid"></div>
+          <div class="panel-wet-overlay" id="wet1"></div>
+          <div class="panel-clean-overlay" id="clean1"></div>
+        </div>
+        <div class="solar-panel panel2">
+          <div class="panel-grid"></div>
+          <div class="panel-wet-overlay" id="wet2"></div>
+          <div class="panel-clean-overlay" id="clean2"></div>
+        </div>
+        <div class="solar-panel panel3">
+          <div class="panel-grid"></div>
+          <div class="panel-wet-overlay" id="wet3"></div>
+          <div class="panel-clean-overlay" id="clean3"></div>
+        </div>
+      </div>
+
+      <!-- The Rail -->
+      <div class="rail-system">
+        <div class="rail-track">
+          <div class="rail-red"></div>
+          <div class="rail-silver"></div>
+        </div>
+        <!-- The Wiper Unit -->
+        <div class="robot-unit" id="robotUnit">
+          <div class="motor-body">
+            <div class="motor-wheel"></div>
+            <div class="motor-bracket"></div>
+            <!-- Linear wiper blade (like car wiper, linear motion) -->
+            <div class="wiper-blade-container">
+              <div class="wiper-blade"></div>
+              <div class="wiper-rubber"></div>
+            </div>
+          </div>
+          <div class="robot-glow"></div>
+          <!-- Water droplet spray particles -->
+          <div class="water-spray-effect">
+            <span class="ws ws1"></span><span class="ws ws2"></span>
+            <span class="ws ws3"></span><span class="ws ws4"></span>
+            <span class="ws ws5"></span><span class="ws ws6"></span>
+          </div>
+          <!-- Clean trail behind wiper -->
+          <div class="clean-trail"></div>
+        </div>
+      </div>
+
+      <!-- Labels -->
+      <div class="demo-labels">
+        <div class="dlabel">💧 Water Pipe + Jet Nozzles</div>
+        <div class="dlabel">🔩 Silver Aluminium Rail Track</div>
+        <div class="dlabel">🔴 Red Silicon Wiper Blade</div>
+      </div>
+
+      <div class="demo-status">
+        <span class="status-dot"></span>
+        <span id="statusText">Cleaning in progress...</span>
+      </div>
+    </div>
+
+    <div class="demo-caption">
+      <div class="dcap-card">
+        <span class="dcap-icon">💧</span>
+        <strong>Water Jet Spray</strong>
+        <small>Pipe with nozzles ahead of each panel sprays water to loosen dust</small>
+      </div>
+      <div class="dcap-card">
+        <span class="dcap-icon">🪟</span>
+        <strong>Linear Wiper Stroke</strong>
+        <small>Rubber blade sweeps linearly — like a car wiper but on a straight rail</small>
+      </div>
+      <div class="dcap-card">
+        <span class="dcap-icon">🔄</span>
+        <strong>Auto Reversal</strong>
+        <small>Limit switches at each end trigger motor direction reversal automatically</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section id="gallery" class="section-gallery">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-tag">Project Gallery</span>
+      <h2>Real Build. <em class="grad">Real Results.</em></h2>
+      <p>Photos from our actual rooftop installation and prototype testing.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item gi-large">
+        <img src="img_hero.png" alt="SolarBot installed on panels — front view"/>
+        <div class="gallery-caption">Rail System Installed on Rooftop Panels</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img_mechanism.png" alt="Motor drive mechanism and rail components"/>
+        <div class="gallery-caption">Motor + Rail Components</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img_hero.png" alt="Side view of rail running across panels"/>
+        <div class="gallery-caption">Rail Spanning Full Panel Width</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="section-features">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-tag">What We Built</span>
+      <h2>Engineering <em class="grad">Highlights</em></h2>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon-wrap" style="--clr:#06b6d4">💧</div>
+        <h3>Water Pipe + Jet Nozzles</h3>
+        <p>A pipe runs across the panel array with individual jet nozzles positioned ahead of each panel — spraying water to loosen and soften dust before the wiper arrives.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon-wrap" style="--clr:#f59e0b">🔴</div>
+        <h3>Red Silicon Wiper Blade</h3>
+        <p>The <strong>red part</strong> is a silicon squeegee wiper blade — just like a car windshield wiper rubber — that moves linearly across the panel, sweeping water and dust off the glass surface.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon-wrap" style="--clr:#8b5cf6">🔩</div>
+        <h3>Silver Aluminium Rail Track</h3>
+        <p>Silver T-slot aluminium extrusion spans the full panel width, acting as the precision track that guides the motor drive unit in a straight linear path.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon-wrap" style="--clr:#10b981">⚙️</div>
+        <h3>DC Motor Drive</h3>
+        <p>An <strong>encoder DC motor</strong> is used — the built-in rotary encoder counts pulses as the motor turns, giving the microcontroller precise position feedback at all times. This allows exact control of travel distance during normal cycles.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon-wrap" style="--clr:#f43f5e">⚡</div>
+        <h3>Limit Switch — Power Loss Homing</h3>
+        <p>The limit switch is <strong>not</strong> used during normal cycles. If a power cut stops the wiper mid-panel, the MCU restarts with no position memory. On restart, it drives the wiper toward the switch end until triggered — then uses the encoder to count the exact pre-set pulse distance from the switch back to home position.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon-wrap" style="--clr:#f59e0b">⏱️</div>
+        <h3>Timer Controlled</h3>
+        <p>The pump and motor are activated on a schedule — the jet sprays first, wiper follows, and the system stops automatically after each cycle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="section-how">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-tag">Mechanism</span>
+      <h2>How It <em class="grad">Works</em></h2>
+    </div>
+    <div class="how-timeline">
+      <div class="htl-item">
+        <div class="htl-num">01</div>
+        <div class="htl-content">
+          <h3>💧 Water Activates</h3>
+          <p>The pump starts. Water flows through a pipe running along the top of the panel array, feeding individual jet nozzles positioned ahead of each panel row.</p>
+        </div>
+      </div>
+      <div class="htl-connector"></div>
+      <div class="htl-item">
+        <div class="htl-num">02</div>
+        <div class="htl-content">
+          <h3>🚿 Jets Spray Panels</h3>
+          <p>Each nozzle sprays a fine jet of water across the panel surface — loosening dust, bird droppings, and particulates, making them easy to wipe clean.</p>
+        </div>
+      </div>
+      <div class="htl-connector"></div>
+      <div class="htl-item">
+        <div class="htl-num">03</div>
+        <div class="htl-content">
+          <h3>🔴 Silicon Wiper Sweeps</h3>
+          <p>The DC motor drives the unit along the silver aluminium rail. The <strong>red silicon wiper blade</strong> moves in a straight horizontal stroke — exactly like a car windshield wiper rubber — sweeping water and dust cleanly off the glass.</p>
+        </div>
+      </div>
+      <div class="htl-connector"></div>
+      <div class="htl-item">
+        <div class="htl-num">04</div>
+        <div class="htl-content">
+          <h3>🏠 Wiper Returns Home</h3>
+          <p>The microcontroller drives the motor in reverse, returning the wiper to home position. The pump shuts off. The system idles until the next scheduled cycle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section id="specs" class="section-specs">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-tag">Technical Specs</span>
+      <h2>Under the <em class="grad">Hood</em></h2>
+    </div>
+    <div class="specs-grid">
+      <div class="spec-row"><span class="spec-label">Rail / Track</span><span class="spec-val">Silver Aluminium T-slot Extrusion</span></div>
+      <div class="spec-row"><span class="spec-label">Wiper Blade Material</span><span class="spec-val">Red Silicon (same as car windshield wiper rubber)</span></div>
+      <div class="spec-row"><span class="spec-label">Motor Type</span><span class="spec-val">Encoder DC Motor (built-in rotary encoder)</span></div>
+      <div class="spec-row"><span class="spec-label">Cleaning Method</span><span class="spec-val">Water Jet Spray + Red Silicon Wiper Blade (Linear)</span></div>
+      <div class="spec-row"><span class="spec-label">Water Supply</span><span class="spec-val">Pipe + Individual Nozzle Jets Per Panel Row</span></div>
+      <div class="spec-row"><span class="spec-label">Wiper Motion</span><span class="spec-val">Linear (Horizontal Stroke — Like Car Wiper)</span></div>
+      <div class="spec-row"><span class="spec-label">Limit Switch Role</span><span class="spec-val">Power-Loss Homing Only (not used in normal cycles)</span></div>
+      <div class="spec-row"><span class="spec-label">Homing Logic</span><span class="spec-val">Restart → move to switch → trigger → encoder counts pulses → reach home</span></div>
+      <div class="spec-row"><span class="spec-label">Power Source</span><span class="spec-val">12V DC (Panel Output or External Supply)</span></div>
+      <div class="spec-row"><span class="spec-label">Operation Sequence</span><span class="spec-val">Pump ON → Jets Spray → Wiper Travels → Pump OFF</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare" class="section-compare">
+  <div class="container">
+    <div class="section-header">
+      <span class="sec-tag">Why This Matters</span>
+      <h2>Manual vs <em class="grad">Automated</em></h2>
+    </div>
+    <div class="compare-cards">
+      <div class="cmp-card bad-card">
+        <div class="cmp-title">❌ Manual Cleaning</div>
+        <ul>
+          <li>Requires 100–500L of water per session</li>
+          <li>Safety risk climbing onto rooftop panels</li>
+          <li>Irregular schedule — panels stay dirty</li>
+          <li>Labor cost every clean cycle</li>
+          <li>No performance tracking</li>
+        </ul>
+      </div>
+      <div class="cmp-vs">VS</div>
+      <div class="cmp-card good-card">
+        <div class="cmp-title">✅ SolarBot Automated</div>
+        <ul>
+          <li>Controlled water via precision jet nozzles — far less than manual</li>
+          <li>Fully automated — no human on roof</li>
+          <li>Scheduled cleaning every day</li>
+          <li>Low cost after initial build</li>
+          <li>Measurable energy output improvement</li>
+          <li>Silicon wiper sweeps water + dust off cleanly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-contact">
+  <div class="container">
+    <div class="contact-box">
+      <span class="sec-tag">Get In Touch</span>
+      <h2>Interested in This <em class="grad">Project?</em></h2>
+      <p>Have questions about the build, want to collaborate, or need help replicating it for your installation?</p>
+      <form class="cform" id="cform">
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" required/>
+          <input type="email" placeholder="Email Address" required/>
+        </div>
+        <textarea placeholder="Your message..." rows="4" required></textarea>
+        <button type="submit" class="btn-primary">Send Message ↗</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <span class="logo">☀ SOLARBOT</span>
+    <p>A student engineering project — autonomous solar panel cleaning system.</p>
+    <p class="footer-copy">© 2025 SolarBot Project. Built with dedication.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
